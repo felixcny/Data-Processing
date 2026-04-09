@@ -1,0 +1,10 @@
+dagster
+dagster-webserver
+dagster-postgres
+dagster-dbt
+dbt-duckdb
+requests
+pandas
+dagster-duckdb-pandas
+dagster-duckdb
+dagster-webserver

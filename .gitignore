@@ -16,3 +16,11 @@ dbt_project/target/
 
 # OS
 .DS_Store
+
+# Fichiers internes de Dagster
+.telemetry/
+.nux/
+.logs_queue/
+history/
+logs/
+schedules/
