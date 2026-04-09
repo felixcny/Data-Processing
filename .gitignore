@@ -1,0 +1,18 @@
+# Environnement virtuel
+venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Données
+data/*.duckdb
+data/*.csv
+
+# dbt
+dbt_project/dbt_packages/
+dbt_project/target/
+
+# OS
+.DS_Store
