@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
-import json  
+import json
+import duckdb  
 from dagster import asset, Output
 
 @asset()
