@@ -29,7 +29,7 @@ def utilisateurs_json():
     )
 
 @asset(
-    deps=["users_json"] 
+    deps=["utilisateurs_json"] 
 )
 def table_utilisateurs():
    

@@ -29,7 +29,7 @@ def commentaires_json():
     )
 
 @asset(
-    deps=["comments_json"] 
+    deps=["commentaires_json"] 
 )
 def table_commentaires():
    

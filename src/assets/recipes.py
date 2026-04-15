@@ -36,8 +36,9 @@ def recettes_json():
     )
 
 @asset(
-    deps=["recipes_json"] 
+    deps=["recettes_json"] 
 )
+
 def table_recettes():
    
     #on se connecte au fichier de base de données

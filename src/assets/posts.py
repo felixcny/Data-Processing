@@ -29,7 +29,7 @@ def publications_json():
     )
 
 @asset(
-    deps=["posts_json"] 
+    deps=["publications_json"] 
 )
 def table_publications():
    
