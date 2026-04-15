@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
-import json  
+import json
+import duckdb  
 from dagster import asset, Output
 
 @asset()
@@ -26,3 +27,28 @@ def utilisateurs_json():
             "preview": df.head().to_html()
         }
     )
+
+@asset(
+    deps=["users_json"] 
+)
+def table_utilisateurs():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE users AS (
+        SELECT
+	    id AS id_user,
+	    firstName,
+	    lastName,
+	    gender,
+	    birthDate,
+	    address,
+	    role 
+        FROM read_json_auto('data/raw/users.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()
