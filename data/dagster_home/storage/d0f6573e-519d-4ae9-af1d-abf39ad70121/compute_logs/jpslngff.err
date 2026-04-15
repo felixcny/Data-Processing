@@ -1,0 +1,24 @@
+2026-04-15 10:51:33 +0000 - dagster - DEBUG - __ASSET_JOB - d0f6573e-519d-4ae9-af1d-abf39ad70121 - 133 - LOGS_CAPTURED - Started capturing logs in process (pid: 133).
+2026-04-15 10:51:33 +0000 - dagster - DEBUG - __ASSET_JOB - d0f6573e-519d-4ae9-af1d-abf39ad70121 - 133 - users_json - STEP_START - Started execution of step "users_json".
+2026-04-15 10:51:34 +0000 - dagster - ERROR - __ASSET_JOB - d0f6573e-519d-4ae9-af1d-abf39ad70121 - 133 - users_json - STEP_FAILURE - Execution of step "users_json" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "users_json"::
+
+NameError: name 'raw' is not defined
+
+Stack Trace:
+  File "/usr/local/lib/python3.11/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
+    yield
+  File "/usr/local/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 394, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 135, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 115, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+                                                                    ^^^^^^^^^^^^^^^^^^
+  File "/opt/dagster/app/src/assets/users.py", line 14, in users_json
+    with open(data/raw/users.json, "w") as f:
+                   ^^^
+

@@ -1,10 +1,9 @@
-from dagster import Definitions, asset
+from dagster import Definitions, load_assets_from_package_module
+from src import assets  #on importe le dossier asset
 
-@asset
-def mon_premier_asset():
-    """Un asset de test pour vérifier que tout marche."""
-    return "Hello Data!"
+# on charge tous les assets qui sont dans notre dossier src/assets/
+tous_les_assets = load_assets_from_package_module(assets)
 
 defs = Definitions(
-    assets=[mon_premier_asset],
+    assets=tous_les_assets,
 )

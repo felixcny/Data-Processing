@@ -1,5 +1,6 @@
 version: '3.8'
 
+#lancer le serveur web dagster
 services:
   dagster:
     build: .
@@ -11,4 +12,17 @@ services:
       - "3000:3000"
     environment:
       - DAGSTER_HOME=/opt/dagster/app
+    restart: always
+
+#le daemon indispensable pour lancer les taches
+  dagster_daemon:
+    build: .
+    container_name: dagster_daemon
+    # On lui dit de lancer le daemon
+    command: dagster-daemon run
+    volumes:
+      - .:/opt/dagster/app
+      - ./data:/opt/dagster/app/data
+    environment:
+      - DAGSTER_HOME=/opt/dagster/app/data/dagster_home
     restart: always

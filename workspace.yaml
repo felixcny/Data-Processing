@@ -1,0 +1,3 @@
+#le fichier permet d'exécuter les taches assets, ... au démarrage de dockers grace au daemon
+load_from:
+  - python_file: src/definition.py
