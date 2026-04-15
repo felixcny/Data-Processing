@@ -46,8 +46,8 @@ def table_paniers():
     CREATE OR REPLACE TABLE carts AS (
         SELECT
 	    id AS id_cart,
-	    userId AS id_user
-	    products,      #important
+	    userId AS id_user,
+	    products,      -- important
 	    total	  
         FROM read_json_auto('data/raw/carts.json')
     );

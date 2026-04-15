@@ -1,4 +1,4 @@
-from dagster import Definitions, load_assets_from_package_module, AssetSelection
+from dagster import Definitions, load_assets_from_package_module, define_asset_job, AssetSelection, in_process_executor
 from src import assets  #on importe le dossier asset
 
 # on charge tous les assets qui sont dans notre dossier src/assets/
@@ -12,6 +12,7 @@ chargement_tables_job = define_asset_job(
 
 defs = Definitions(
     assets=tous_les_assets,
-    jobs=[chargement_tables_job]
+    jobs=[chargement_tables_job],
+    executor=in_process_executor #eviter les crash
 )
 

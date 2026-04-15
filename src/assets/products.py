@@ -52,8 +52,8 @@ def table_produits():
 	    discountPercentage AS discount_percentage,
 	    rating,
 	    stock,
-	    reviews,    #on juge important
-	    availabilityStatus AS availability_status #on juge important à garder
+	    reviews,   -- on juge important
+	    availabilityStatus AS availability_status -- on juge important à garder
         FROM read_json_auto('data/raw/products.json')
     );
     """
