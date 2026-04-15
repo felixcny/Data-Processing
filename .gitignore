@@ -9,6 +9,10 @@ __pycache__/
 # Données
 data/*.duckdb
 data/*.csv
+data/raw/
+data/processed/
+*.db
+*.duckdb
 
 # dbt
 dbt_project/dbt_packages/
