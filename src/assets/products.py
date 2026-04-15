@@ -31,3 +31,31 @@ def produits_json():
             "preview": df.head().to_html()
         }
     )
+
+@asset(
+    deps=["products_json"] 
+)
+def table_produits():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE products AS (
+        SELECT
+	    id AS id_product,
+	    title,
+	    description,
+	    category,
+	    price,
+	    discountPercentage AS discount_percentage,
+	    rating,
+	    stock,
+	    reviews,    #on juge important
+	    availabilityStatus AS availability_status #on juge important à garder
+        FROM read_json_auto('data/raw/products.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()
