@@ -30,3 +30,6 @@ dbt_project/target/
 history/
 logs/
 schedules/
+
+
+data/dagster_home/storage/*
