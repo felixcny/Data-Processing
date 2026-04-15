@@ -35,7 +35,7 @@ def paniers_json():
     )
 
 @asset(
-    deps=["carts_json"] 
+    deps=["paniers_json"] 
 )
 def table_paniers():
    

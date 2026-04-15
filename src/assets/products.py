@@ -34,7 +34,7 @@ def produits_json():
     )
 
 @asset(
-    deps=["products_json"] 
+    deps=["produits_json"] 
 )
 def table_produits():
    
