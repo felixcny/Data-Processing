@@ -27,3 +27,26 @@ def commentaires_json():
             "preview": df.head().to_html()
         }
     )
+
+@asset(
+    deps=["comments_json"] 
+)
+def table_commentaires():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE comments AS (
+        SELECT
+	    id AS id_comment,
+	    postId AS id_post,
+	    user,
+	    body,
+	    likes 
+        FROM read_json_auto('data/raw/comments.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()

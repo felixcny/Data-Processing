@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
-import json  
+import json
+import duckdb  
 from dagster import asset, Output
 
 @asset()
@@ -32,3 +33,25 @@ def paniers_json():
             "preview": df.head().to_html()
         }
     )
+
+@asset(
+    deps=["carts_json"] 
+)
+def table_paniers():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE carts AS (
+        SELECT
+	    id AS id_cart,
+	    userId AS id_user
+	    products,      #important
+	    total	  
+        FROM read_json_auto('data/raw/carts.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()

@@ -40,10 +40,10 @@ def table_utilisateurs():
     CREATE OR REPLACE TABLE users AS (
         SELECT
 	    id AS id_user,
-	    firstName,
-	    lastName,
+	    firstName AS firstname,
+	    lastName AS lastname,
 	    gender,
-	    birthDate,
+	    birthDate AS birthdate,
 	    address,
 	    role 
         FROM read_json_auto('data/raw/users.json')

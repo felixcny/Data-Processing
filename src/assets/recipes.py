@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
-import json  
+import json
+import duckdb  
 from dagster import asset, Output
 
 @asset()
@@ -34,3 +35,27 @@ def recettes_json():
         }
     )
 
+@asset(
+    deps=["recipes_json"] 
+)
+def table_recettes():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE recipes AS (
+        SELECT
+	    id AS id_recipe,
+	    name,
+	    ingredients,
+	    instructions,
+	    difficulty,
+	    userID AS id_user,
+	    rating
+        FROM read_json_auto('data/raw/recipes.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()

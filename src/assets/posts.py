@@ -27,3 +27,26 @@ def publications_json():
             "preview": df.head().to_html()
         }
     )
+
+@asset(
+    deps=["posts_json"] 
+)
+def table_publications():
+   
+    #on se connecte au fichier de base de données
+    con = duckdb.connect("data/local_database.duckdb")
+    
+    query = """
+    CREATE OR REPLACE TABLE posts AS (
+        SELECT
+	    id AS id_post,
+	    userId AS id_user,
+	    title,
+	    body,
+	    reactions
+        FROM read_json_auto('data/raw/posts.json')
+    );
+    """
+    
+    con.execute(query)
+    con.close()
