@@ -9,8 +9,10 @@ __pycache__/
 # Données
 data/*.duckdb
 data/*.csv
-data/raw/
-data/processed/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
 *.db
 *.duckdb
 
