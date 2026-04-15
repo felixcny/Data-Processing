@@ -1,10 +1,10 @@
-2026-04-15 10:51:32 +0000 - dagster - DEBUG - __ASSET_JOB - 57673e92-c591-4fa2-adbb-b063a0298110 - 94 - LOGS_CAPTURED - Started capturing logs in process (pid: 94).
-2026-04-15 10:51:32 +0000 - dagster - DEBUG - __ASSET_JOB - 57673e92-c591-4fa2-adbb-b063a0298110 - 94 - users_json - STEP_START - Started execution of step "users_json".
-2026-04-15 10:51:33 +0000 - dagster - ERROR - __ASSET_JOB - 57673e92-c591-4fa2-adbb-b063a0298110 - 94 - users_json - STEP_FAILURE - Execution of step "users_json" failed.
+2026-04-15 11:50:49 +0000 - dagster - DEBUG - __ASSET_JOB - ef63a64b-6edd-47f9-90ab-cb2ff8ecf100 - 418 - LOGS_CAPTURED - Started capturing logs in process (pid: 418).
+2026-04-15 11:50:49 +0000 - dagster - DEBUG - __ASSET_JOB - ef63a64b-6edd-47f9-90ab-cb2ff8ecf100 - 418 - utilisateurs_json - STEP_START - Started execution of step "utilisateurs_json".
+2026-04-15 11:50:50 +0000 - dagster - ERROR - __ASSET_JOB - ef63a64b-6edd-47f9-90ab-cb2ff8ecf100 - 418 - utilisateurs_json - STEP_FAILURE - Execution of step "utilisateurs_json" failed.
 
-dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "users_json"::
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "utilisateurs_json"::
 
-NameError: name 'raw' is not defined
+NameError: name 'response' is not defined
 
 Stack Trace:
   File "/usr/local/lib/python3.11/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
@@ -18,7 +18,7 @@ Stack Trace:
   File "/usr/local/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 115, in invoke_compute_fn
     return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
                                                                     ^^^^^^^^^^^^^^^^^^
-  File "/opt/dagster/app/src/assets/users.py", line 14, in users_json
-    with open(data/raw/users.json, "w") as f:
-                   ^^^
+  File "/opt/dagster/app/src/assets/users.py", line 12, in utilisateurs_json
+    data = response.json()['users']
+           ^^^^^^^^
 

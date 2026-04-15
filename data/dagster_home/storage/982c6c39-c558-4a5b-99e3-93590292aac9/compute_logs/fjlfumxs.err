@@ -1,7 +1,0 @@
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - LOGS_CAPTURED - Started capturing logs in process (pid: 2006).
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - users_json - STEP_START - Started execution of step "users_json".
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - users_json - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - users_json - Writing file at: /opt/dagster/app/data/dagster_home/storage/users_json using PickledObjectFilesystemIOManager...
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - users_json - ASSET_MATERIALIZATION - Materialized value users_json.
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - users_json - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-2026-04-15 10:53:48 +0000 - dagster - DEBUG - __ASSET_JOB - 982c6c39-c558-4a5b-99e3-93590292aac9 - 2006 - users_json - STEP_SUCCESS - Finished execution of step "users_json" in 435ms.

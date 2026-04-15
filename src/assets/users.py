@@ -4,10 +4,10 @@ import json
 from dagster import asset, Output
 
 @asset()
-def users_json():
+def utilisateurs_json():
     """On extrait les données de la table des users depuis l'API DummyJSON"""
     
-    response = requests.get("https://dummyjson.com/users?limit=150")
+    reponse = requests.get("https://dummyjson.com/users?limit=150")
 
     data = response.json()['users']
 
