@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_data
+    schema: raw
+    tables:
+      - name: table_utilisateurs
+      - name: table_produits
+      - name: table_paniers

@@ -1,0 +1,7 @@
+duckdb_profile:
+  outputs:
+    dev:
+      type: duckdb
+      path: "/opt/dagster/app/data/local_database.duckdb"
+      threads: 1
+  target: dev

@@ -7,4 +7,3 @@ requests
 pandas
 dagster-duckdb-pandas
 dagster-duckdb
-dagster-webserver
