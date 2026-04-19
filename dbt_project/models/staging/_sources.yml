@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw_data
-    schema: raw
+    schema: main
     tables:
       - name: table_utilisateurs
       - name: table_produits
