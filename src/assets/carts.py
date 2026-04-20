@@ -48,7 +48,10 @@ def table_paniers():
 	    id AS id_cart,
 	    userId AS id_user,
 	    products,      -- important
-	    total	  
+	    total,
+	    discountedTotal AS discounted_total,
+	    totalProducts AS total_products,
+	    totalQuantity AS total_quantity	  
         FROM read_json_auto('data/raw/carts.json')
     );
     """
