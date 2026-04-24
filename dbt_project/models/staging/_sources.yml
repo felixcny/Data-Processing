@@ -4,6 +4,7 @@ sources:
   - name: raw_data
     schema: main
     tables:
-      - name: table_utilisateurs
-      - name: table_produits
-      - name: table_paniers
+      - name: users
+      - name: products
+      - name: carts
+  
