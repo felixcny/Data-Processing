@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: "Table de faits centrale contenant toutes les transactions de vente par article."
+    columns:
+      - name: cart_item_id
+        tests:
+          - unique
+          - not_null
+      - name: revenue_net
+        tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('dim_products')
+              field: product_id
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('dim_user')
+              field: id_user
+      - name: date_id
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+
+  - name: dim_user
+    columns:
+      - name: id_user
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
