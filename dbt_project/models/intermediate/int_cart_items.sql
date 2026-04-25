@@ -23,5 +23,6 @@ aggregated_product AS (
 
 SELECT
     {{ dbt_utils.generate_surrogate_key(['id_cart', 'product_id']) }} AS cart_item_id,
-    *
+    *,
+    CAST('2025-01-01' AS DATE) + (abs(hash(id_cart)) % 365) * INTERVAL '1 day' AS sale_date
 FROM aggregated_product
