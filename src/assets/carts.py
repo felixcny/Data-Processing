@@ -18,7 +18,7 @@ def paniers_json():
     data = reponse.json()['carts']
     
     #on écrit dans le fichier créé
-    with open("data/raw/carts.json", "w") as f:
+    with open("/opt/dagster/app/data/raw/carts.json", "w") as f:
         json.dump(data, f, indent=4)
     
     #on transforme en dataframe pour faire nos manipulations
@@ -40,7 +40,7 @@ def paniers_json():
 def table_paniers():
    
     #on se connecte au fichier de base de données
-    con = duckdb.connect("data/local_database.duckdb")
+    con = duckdb.connect("/opt/dagster/app/data/local_database.duckdb")
     
     query = """
     CREATE OR REPLACE TABLE carts AS (

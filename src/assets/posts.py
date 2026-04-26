@@ -12,7 +12,7 @@ def publications_json():
 
     data = reponse.json()['posts']
 
-    with open("data/raw/posts.json", "w") as f:
+    with open("/opt/dagster/app/data/raw/posts.json", "w") as f:
         json.dump(data, f, indent=4)
     
     #on transforme en dataframe pour faire nos manipulations
@@ -34,7 +34,7 @@ def publications_json():
 def table_publications():
    
     #on se connecte au fichier de base de données
-    con = duckdb.connect("data/local_database.duckdb")
+    con = duckdb.connect("/opt/dagster/app/data/local_database.duckdb")
     
     query = """
     CREATE OR REPLACE TABLE posts AS (

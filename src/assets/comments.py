@@ -12,7 +12,7 @@ def commentaires_json():
 
     data = reponse.json()['comments']
 
-    with open("data/raw/comments.json", "w") as f:
+    with open("/opt/dagster/app/data/raw/comments.json", "w") as f:
         json.dump(data, f, indent=4)
     
     #on transforme en dataframe pour faire nos manipulations
@@ -34,7 +34,7 @@ def commentaires_json():
 def table_commentaires():
    
     #on se connecte au fichier de base de données
-    con = duckdb.connect("data/local_database.duckdb")
+    con = duckdb.connect("/opt/dagster/app/data/local_database.duckdb")
     
     query = """
     CREATE OR REPLACE TABLE comments AS (

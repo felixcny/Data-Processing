@@ -26,3 +26,14 @@ services:
     environment:
       - DAGSTER_HOME=/opt/dagster/app/data/dagster_home
     restart: always
+
+  # AJOUTE CE BLOC ICI :
+  dbt:
+    build: .
+    container_name: dbt_service
+    volumes:
+      - .:/opt/dagster/app
+      - ./data:/opt/dagster/app/data
+    environment:
+      - DBT_PROFILES_DIR=/opt/dagster/app/dbt_project
+    working_dir: /opt/dagster/app/dbt_project

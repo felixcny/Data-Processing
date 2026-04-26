@@ -19,7 +19,7 @@ def recettes_json():
     data = reponse.json()['recipes']
     
     #on écrit dans le fichier créé
-    with open("data/raw/recipes.json", "w") as f:
+    with open("/opt/dagster/app/data/raw/recipes.json", "w") as f:
         json.dump(data, f, indent=4)
     
     #on transforme en dataframe pour faire nos manipulations
@@ -42,7 +42,7 @@ def recettes_json():
 def table_recettes():
    
     #on se connecte au fichier de base de données
-    con = duckdb.connect("data/local_database.duckdb")
+    con = duckdb.connect("/opt/dagster/app/data/local_database.duckdb")
     
     query = """
     CREATE OR REPLACE TABLE recipes AS (
