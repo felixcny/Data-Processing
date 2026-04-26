@@ -27,7 +27,6 @@ services:
       - DAGSTER_HOME=/opt/dagster/app/data/dagster_home
     restart: always
 
-  # AJOUTE CE BLOC ICI :
   dbt:
     build: .
     container_name: dbt_service
