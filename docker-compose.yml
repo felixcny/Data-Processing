@@ -10,7 +10,6 @@ services:
       - ./data:/opt/dagster/app/data
     ports:
       - "3000:3000"
-      - "8501:8501"
     environment:
       - DAGSTER_HOME=/opt/dagster/app
     restart: always
@@ -37,3 +36,15 @@ services:
     environment:
       - DBT_PROFILES_DIR=/opt/dagster/app/dbt_project
     working_dir: /opt/dagster/app/dbt_project
+
+  dashboard:
+    build: .
+    container_name: streamlit_app
+    volumes:
+      - .:/opt/dagster/app
+      - ./data:/opt/dagster/app/data
+    ports:
+      - "8501:8501"
+    working_dir: /opt/dagster/app
+    command: streamlit run app.py
+    restart: always
