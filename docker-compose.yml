@@ -10,11 +10,12 @@ services:
       - ./data:/opt/dagster/app/data
     ports:
       - "3000:3000"
+      - "8501:8501"
     environment:
       - DAGSTER_HOME=/opt/dagster/app
     restart: always
 
-#le daemon indispensable pour lancer les taches
+  #le daemon indispensable pour lancer les taches
   dagster_daemon:
     build: .
     container_name: dagster_daemon
