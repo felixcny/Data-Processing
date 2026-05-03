@@ -1,14 +1,14 @@
-from dagster import Definitions, load_assets_from_package_module, in_process_executor
-from src import assets  #on importe le dossier assets
-from src.jobs.ingestions_job import chargement_tables_job    #on importe le dossier jobs
+from dagster import Definitions, load_assets_from_package_module, AssetChecksDefinition, in_process_executor
+from src import assets 
+from src.jobs.ingestions_job import chargement_tables_job 
+from src.schedules.planning_jour import planning_jour
 
-# on charge tous les assets qui sont dans notre dossier src/assets/
+# On charge tout le dossier assets
 tous_les_assets = load_assets_from_package_module(assets)
 
-
 defs = Definitions(
-    assets=tous_les_assets,
+    assets=tous_les_assets, 
     jobs=[chargement_tables_job],
-    executor=in_process_executor #eviter les crash
+    schedules=[planning_jour],
+    executor=in_process_executor
 )
-
