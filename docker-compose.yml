@@ -10,6 +10,7 @@ services:
       - ./data:/opt/dagster/app/data
     ports:
       - "3000:3000"
+      - "8081:8081"
     environment:
       - DAGSTER_HOME=/opt/dagster/app
     restart: always
