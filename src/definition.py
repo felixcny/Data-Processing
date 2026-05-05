@@ -16,6 +16,12 @@ from src.schedules.planning_jour import planning_jour
 def mes_assets_dbt(context, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
 
+    for event in dbt_run.stream():
+        # ajout de logs détaillés
+        if "error" in str(event):
+            context.log.error(f"Erreur détectée dans dbt : {event}")
+        yield event
+
 dbt_job = define_asset_job(
     name="dbt_job",
     selection=AssetSelection.assets(mes_assets_dbt)

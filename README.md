@@ -13,17 +13,15 @@ docker-compose up -d --build
 #si ce n'est pas fait créer la base
 duckdb data/local_database.duckdb
 
-#verifier nos tables staging, dimension ...etc
-
 Lancer pytest:
 docker exec -it dagster_app pytest /opt/dagster/app/tests
 
-Snapshot :
-docker exec -it dagster_app dbt snapshot --project-dir /opt/dagster/app/dbt_project --profiles-dir /opt/dagster/app/dbt_project
+#verifier nos tables staging, dimension ...etc
+
 
 Lancer dbt docs:
 #éxexuter la génération
 docker exec -it dagster_app dbt docs generate --project-dir /opt/dagster/app/dbt_project --profiles-dir /opt/dagster/app/dbt_project
 
-#
+#visualiser la doc
 docker exec -it dagster_app dbt docs serve --host 0.0.0.0 --port 8081 --project-dir /opt/dagster/app/dbt_project --profiles-dir /opt/dagster/app/dbt_project
