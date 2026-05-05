@@ -1,9 +1,9 @@
-from dagster import ScheduleDefinition
-from src.jobs.ingestions_job import chargement_tables_job
+from dagster import ScheduleDefinition, DefaultScheduleStatus
 
-# planification tous les jours a minuit
 planning_jour = ScheduleDefinition(
-    job=chargement_tables_job,
+    name="planning_jour",
+    job_name="job_complet_quotidien",
     cron_schedule="0 0 * * *", 
-    execution_timezone="Europe/Paris"
+    execution_timezone="Europe/Paris",
+    default_status=DefaultScheduleStatus.RUNNING
 )
