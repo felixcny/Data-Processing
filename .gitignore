@@ -29,7 +29,6 @@ dbt_project/target/
 .logs_queue/
 history/
 logs/
-schedules/
 
 
 data/dagster_home/storage/*
